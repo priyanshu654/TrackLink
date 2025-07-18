@@ -22,7 +22,7 @@ const linksController = {
       //console.log("Subscription",hasSubscription);
       const hasCredits = user.credits >= 1;
 
-      //console.log("user ka credit",hasCredits);
+      console.log("user ka credit",hasCredits);
       
 
       if (!hasSubscription && !hasCredits) {

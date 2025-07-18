@@ -50,6 +50,9 @@ const paymentController = {
       } = req.body;
       const body = razorpay_order_id + "|" + razorpay_payment_id;
 
+      console.log("body",body);
+      
+
       const expectedSignature = crypto
         .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
         .update(body.toString())
@@ -65,10 +68,10 @@ const paymentController = {
       user.credits += Number(credits);
       await user.save();
 
-      res.json({ user: user });
+      return res.json({ user: user });
     } catch (error) {
       console.log(error);
-      res.status(500).json({
+      return res.status(500).json({
         message: "Internal server error",
       });
     }
